@@ -1,0 +1,21 @@
+{
+  "builders": [{
+    "ami_name": "node-example-{{isotime | clean_ami_name}}",
+    "instance_type": "t2.micro",
+    "region": "eu-central-1",
+    "type": "amazon-ebs",
+    "source_ami": "ami-0dd0be70cc0d493b7",
+    "ssh_username": "ubuntu"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "curl https://deb.nodesource.com/setup_8.x | sudo -E bash -",
+      "sudo apt-get install -y nodejs"
+    ]
+  },{
+    "type": "file",
+    "source": "{{template_dir}}/server.js",
+    "destination": "/home/ubuntu/server.js"
+  }]
+}
