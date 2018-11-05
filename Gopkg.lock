@@ -2,11 +2,12 @@
 
 
 [[projects]]
-  digest = "1:aab18e89f89967460be52e328faba869591d7a1a944bcf5ecba12960ead357a9"
+  digest = "1:43daa4498d7b6ea7cd862612ddd6e0711ec59487657cc2eab745f356ea045f83"
   name = "github.com/gruntwork-io/terratest"
   packages = [
     "modules/collections",
     "modules/customerrors",
+    "modules/docker",
     "modules/files",
     "modules/http-helper",
     "modules/logger",
@@ -49,6 +50,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/gruntwork-io/terratest/modules/docker",
     "github.com/gruntwork-io/terratest/modules/http-helper",
     "github.com/gruntwork-io/terratest/modules/packer",
     "github.com/gruntwork-io/terratest/modules/terraform",

@@ -3,7 +3,8 @@ provider "aws" {
 }
 
 resource "aws_instance" "web_server" {
-  ami                    = "ami-0dd0be70cc0d493b7"
+#  ami                    = "ami-0dd0be70cc0d493b7"
+  ami                    = "${var.ami_id}"
   instance_type          = "t2.micro"
   key_name               = "kacdab"
   vpc_security_group_ids = ["${aws_security_group.web_server.id}"]

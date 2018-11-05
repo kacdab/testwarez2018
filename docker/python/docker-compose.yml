@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web_app:
+    # The name we use for the Docker image in build.json
+    build: . 
+
+    # Run the sample web app on port 8080
+    command: ["python", "app.py"]
+
+    # Set the environment variables
+    environment:
+      - SERVER_PORT=${SERVER_PORT}
+
+    # Expose the sample app's port on the host OS
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
