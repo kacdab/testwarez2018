@@ -13,13 +13,13 @@ import (
 func TestWebServer(t *testing.T) {
   packerOptions := &packer.Options {
     // The path to where the Packer template is located
-    Template: "../web-server/web-server.json",
+    Template: "../web-server2/web-server.json",
   }
   // Build the AMI
   amiId := packer.BuildAmi(t, packerOptions)
   terraformOptions := &terraform.Options {
     // The path to where your Terraform code is located
-    TerraformDir: "../web-server",
+    TerraformDir: "../web-server2",
     // Variables to pass to our Terraform code using -var options
     Vars: map[string]interface{} {
       "ami_id": amiId,
@@ -37,7 +37,7 @@ func TestWebServer(t *testing.T) {
   // takes ~1 min for the Instance to boot, so retry a few times.
   status := 200
   text := "Hello, World"
-  retries := 15
+  retries := 30
   sleep := 5 * time.Second
   http_helper.HttpGetWithRetry(t, url, status, text, retries, sleep)
 }
